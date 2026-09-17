@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 
 // Exercise: pig-latin
 // Prompt: Create a function that converts a given string to Pig Latin.
-// Approach:
+// Approach: Handle punctuation ignore capitalization
 // Time / space complexity:
 
 function solve(input: string): string {
@@ -11,5 +11,5 @@ function solve(input: string): string {
 }
 
 // Add examples and edge cases here. Failed assertions stop the program.
-assert.equal(solve("The quick brown fox jumps over the lazy dog."), "heTay uickqay rownbay oxfay umpsjay overay ethay azylay ogday."); // cspell:disable-line
-console.log("All assertions passed.");
+assert.equal(solve("the quick brown fox jumps over the lazy dog!"), "hetay uickqay rownbay oxfay umpsjay overay ethay azylay ogday!"); // cspell:disable-line
+console.log("All assertions passed!");
