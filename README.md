@@ -19,6 +19,16 @@ npm run watch
 
 Press Ctrl+C to stop watching. Output stays in your terminal so you can compare runs.
 
+Add `--clear` to clear the terminal on each save, before compiling and running again:
+
+```sh
+npm run watch -- --clear             # Newest exercise
+npm run watch -- 1 --clear           # By number
+npm run watch -- playground --clear  # By name
+```
+
+The flag can go before or after the exercise selector. Each rerun shows only fresh output, including any new compiler errors. Omit the flag to keep previous output. If your exercise needs a literal `--clear` argument, put it after another `--`: `npm run watch -- 1 -- --clear`.
+
 ## Start a new challenge
 
 ```sh
@@ -52,7 +62,7 @@ You can also create files yourself directly in `exercises/`. Numbered files such
 | --- | --- |
 | `npm run new -- <name>` | Create a new numbered exercise without overwriting old work |
 | `npm start -- [exercise]` | Type-check, compile, and run an exercise |
-| `npm run watch -- [exercise]` | Type-check, compile, and rerun when files under `exercises/` change |
+| `npm run watch -- [exercise] [--clear]` | Type-check, compile, and rerun on saves; optionally clear previous output |
 | `npm run check -- [exercise]` | Type-check an exercise without running it |
 | `npm run list` | List numbered exercises and show the default |
 | `npm run check:all` | Optionally type-check every file under `exercises/` |

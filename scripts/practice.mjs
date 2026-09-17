@@ -7,7 +7,20 @@ const root = fileURLToPath(new URL("../", import.meta.url));
 const exercisesDirectory = join(root, "exercises");
 const buildDirectory = join(root, ".practice-build");
 const compiler = join(root, "node_modules/typescript/bin/tsc");
-const [command = "run", selector, ...scriptArguments] = process.argv.slice(2);
+const [command = "run", ...commandArguments] = process.argv.slice(2);
+let clearConsole = false;
+let parseWatchOptions = command === "watch";
+const positionalArguments = [];
+for (const argument of commandArguments) {
+  if (parseWatchOptions && argument === "--") {
+    parseWatchOptions = false;
+  } else if (parseWatchOptions && argument === "--clear") {
+    clearConsole = true;
+  } else {
+    positionalArguments.push(argument);
+  }
+}
+const [selector, ...scriptArguments] = positionalArguments;
 
 function exercises() {
   mkdirSync(exercisesDirectory, { recursive: true });
@@ -101,10 +114,11 @@ function watchExercise(file) {
   let child;
   let debounce;
   console.log(`Watching exercises/ for changes; running ${basename(file)}. Ctrl+C to stop.`);
-  const rerun = () => {
+  const rerun = (clear = true) => {
     // Stop a previous run (including an infinite loop) before checking the next version.
     child?.kill("SIGKILL");
     child = undefined;
+    if (clear && clearConsole) console.clear();
     if (compile(file)) {
       child = runJavaScript(file);
       child.on("exit", (code) => {
@@ -139,7 +153,7 @@ function watchExercise(file) {
   for (const signal of ["SIGINT", "SIGTERM"]) {
     process.once(signal, () => stop(signal === "SIGINT" ? 130 : 143));
   }
-  rerun();
+  rerun(false);
 }
 
 async function main() {
