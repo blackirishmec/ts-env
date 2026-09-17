@@ -1,0 +1,22 @@
+{
+  "name": "ts-practice",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local TypeScript scratchpad with one saved file per exercise.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node scripts/practice.mjs run",
+    "watch": "node scripts/practice.mjs watch",
+    "new": "node scripts/practice.mjs new",
+    "list": "node scripts/practice.mjs list",
+    "check": "node scripts/practice.mjs check",
+    "check:all": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "typescript": "^7.0.2"
+  }
+}
