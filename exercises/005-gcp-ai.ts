@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 
-// Exercise: __EXERCISE_NAME__
-// Prompt:
-// Approach:
+// Exercise: gcp-ai
+// Prompt: Utilize Google Cloud Platform's AI capabilities to translate a sentence from english to spanish.
+// Approach: Use a GCP Client to interact with the AI services.
 
 function solve(input: string): string {
 	// Replace the signature and implementation to fit the exercise.
