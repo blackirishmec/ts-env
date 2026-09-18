@@ -14,4 +14,4 @@ const OUTPUT = 'example';
 
 // Add examples and edge cases here. Failed assertions stop the program.
 assert.equal(solve(INPUT), OUTPUT);
-console.log('All assertions passed.');
+console.log('All assertions passed!');
